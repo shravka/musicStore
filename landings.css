@@ -1,0 +1,260 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,body{
+  height:100%;
+  background-color: black;
+  color:black;
+  max-width: 100%;
+  overflow-x: hidden;
+    background-image: url("/jadrn015/back2.jpg");
+  background-size: cover;
+}
+
+/*
+Forces carousel image to be 100% width and not max width of 100%
+*/
+.carousel-inner > .carousel-item > img, .carousel-inner > .carousel-item> a > img {
+    width: 100%;
+}
+
+li {
+   display: inline;
+}
+
+a{
+  color:#e6ba28;
+  margin: 10px;
+}
+#cart {
+  position: absolute;
+  top: 20px;
+  right: 100px;
+}
+
+#count {
+
+
+    color: #e6ba28;
+    position: absolute;
+    right: 110px;
+
+
+}
+
+.btn-success{
+  background-color:#e6ba28;
+  color:black;
+}
+
+/***********VERTICAL MENU BAR *********************/
+
+.vendorall,.categoryall {
+    width: 200px;
+}
+
+.vendorall a , .categoryall a{
+  margin:5px;
+}
+.vendorall a , .categoryall a{
+  background-color: #fff0f0;
+  color: #e82525;
+  display: block;
+  text-decoration: none;
+}
+
+.vendorall a:hover , .categoryall a:hover{
+    background-color: #ccc;
+}
+
+.vendorall a.active , .categoryall a.active{
+  background-color: #e6ba28;
+  color: black;
+  text-align: center;
+}
+
+/**********************divs container **************************/
+
+#top{
+background-color:black;
+}
+
+#Contentbox{
+  display: inline-block;
+  width:100%;
+  position: relative;
+}
+
+#left {
+  position: relative;
+  top: 50px;
+  width: 200px;
+      float: left;
+      color: white;
+      padding-left: 20px;
+}
+
+#center {
+  position: relative;
+  left: 120px;
+  /* top: 100px; */
+  /* color: yellow; */
+  min-width: 800px;
+  /* right: 100px; */
+  margin-left: 200px;
+  height: 100%;
+  padding-left: 30px;
+
+}
+
+
+
+/***********************************jsp all products****************************************/
+.singleone {
+  // height: 350px;
+  // width: 300px;
+  margin: 20px;
+  float: left;
+  color: #f8e80d;
+  //border: 1px solid #0d0e0d;
+  border-radius: 25px;
+  //background-color: #080808;
+  position:relative;
+  }
+
+
+.message {
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  background-color: #080808;
+  border: 1px solid black;
+  border-radius: 25px;
+  height: 30px;
+  width: 100px;
+  text-align: center;
+}
+
+.imgwrap {
+    height: 300px;
+    width: 300px;
+    position: relative;
+}
+.instrumentImages
+{
+  border-radius: 25px;
+//border: 2px solid #e6ba28;
+border: 1px solid #ddd;
+      padding: 5px;
+
+}
+
+.sku {
+      opacity: 0;
+      text-align: center;
+      position: absolute;
+      color: #f1bb44;
+      width: 100%;
+      font-size: 20px;
+      padding: 20px;
+      text-align: center;
+      position: absolute;
+      background: rgba(15, 12, 1, 0.66);
+      border-radius: 25px;
+      width: 100%;
+      top: 230px;
+      font-weight: bold;
+}
+
+.singleone:hover .sku
+{
+  opacity:1;
+}
+
+.sku-cat {
+  text-align: center;
+  //border-radius: 25px;
+  //background-color: white;
+  //height: 70px;
+}
+/*.instrumentImages:hover
+{
+ //box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 1), 0 13px 20px 0 rgba(0, 0, 0, 0.19)
+//  opacity: 1;
+}*/
+.sku-view
+{
+//border: 1px solid #eae7dd;
+
+}
+.desclayer {
+  color: #d5d547;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity .2s, visibility .2s;
+  background-color: red;
+  width: 300px;
+  height: 300px;
+  font-weight: bold;
+  top: 0;
+  position: absolute;
+
+}
+
+
+/***************************************JSP modal thumbnail*****************************************************/
+/****reference https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal**/
+/* The Modal (background) */
+.modal {
+  //display: none;
+  //position: absolute;
+//  z-index: 1;
+//  padding-top: 100px;
+//  top: 20;
+  width: 800px;
+  height: 800px;
+//  overflow: auto;
+  background-color:rgba(22, 21, 19, 0.9);
+  left: 400px;
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #fafff4;
+  float: right;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+#bigImage {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+#description {
+  color:  #e6ba28;;
+font-size: 12px;
+font-weight: bold;
+}
