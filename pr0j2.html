@@ -13,9 +13,11 @@
     <link rel="stylesheet" href="/jadrn015/css/bootstrap.css">
    <link rel="stylesheet" href="/jadrn015/css/bootstrap.min.css">
        <link rel="stylesheet" href="/jadrn015/css/landings.css">
+           <link rel="stylesheet" href="http://jadran.sdsu.edu/~jadrn015/proj1/jquery-ui-1.12.1.custom/jquery-ui.theme.css">
    <!-- jQuery first, then Bootstrap JS. -->
 	<script src="http://jadran.sdsu.edu/jquery/jquery.js"></script>
    <script src="/jadrn015/js/bootstrap.js"></script>
+       <script src="http://jadran.sdsu.edu/~jadrn015/proj1/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
    <script src="/jadrn015/js/proj2.js"></script>
 
   </head>
@@ -36,7 +38,7 @@
                 <input class="formcontrol" type="text" placeholder="Search">
                 <button class="btn btn-success" type="submit">GO</button>
 
-                <img id="cart" src="cart.png" width="50px" /><span id="count">0</span>
+              <a href="#">  <img id="cart" src="cart.png" width="50px" /><span id="count">0</span></a>
             </div>
           </div>
        </nav>
@@ -96,9 +98,13 @@
            </div>
 
 
-
  </div>
 
+            <div id="dialog-modal-addToCart" class="dialog-modal-addToCart" title="Enter Quantity">
+                <input type="text" name="qty"  id="cartquantity" size="3" maxlength="2" />
+            	<input type="button" name="bag"  class="ui-button" placeholder="quantity" id="addtobag" value="add to bag " />
+
+            </div>
 
   </body>
 </html>

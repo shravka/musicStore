@@ -6,8 +6,31 @@ $(document).ready( function() {
 
   	getCartSize();
 
+		$( "#dialog-modal-addToCart" ).dialog({
+             height: 350,
+             width: 500,
+             modal: true,
+             autoOpen: false
+      });
 
 
+
+// delegated events
+	$(document).on("click", ".addtobag" , function() {
+
+		$("#dialog-modal-addToCart").dialog('open');
+//	 		 $("#addtobag").attr('disabled','disabled');
+ });
+
+//<a href="Online.html">
+$(document).on("click", "#cart" , function() {
+//CartClientDispatcher
+ var urlString="/jadrn015/servlet/CartClientDispatcher?value=";
+ $.post(urlString,function(response) {
+	 //ajax to replace everything
+	$('body').html(response);
+    });
+ });
 
 
 // delegated events
@@ -60,15 +83,14 @@ $(document).on('click', ".add-to-cart", function() {
 			console.log(sku);
  			  var quantity = $('#qty'+sku).val();
 	console.log( quantity );
-	 //getAllCheckboxes();
+    $.get("/jadrn015/servlet/AddToCart?sku="+sku+"&quantity="+quantity,function(response)
+	 	{
+	    //if response is sucessful , we would like to change cart number as well
+	 	 $("#status").html(response);
+  	});
+
 //post all the Product data to servlet
 //update the cart item here call that function and show cart number
-  $.get("/jadrn015/servlet/AddToCart?sku="+sku+"&quantity="+quantity,function(response)
-	{
-   //if response is sucessful , we would like to change cart number as well
-	 $("#status").html(response);
-	});
-
 	getCartSize();
 });
 
@@ -118,6 +140,7 @@ function handleCategoryData(response) {
   var getCartSize=function(){
 		$.get("/jadrn015/servlet/CartSize",function(response)
 		{
+			console.log("im here");
 			console.log(response);
 		  $('#count').html(response);
 		});

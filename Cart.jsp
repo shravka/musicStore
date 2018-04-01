@@ -1,0 +1,90 @@
+<%@ page import = "java.util.*,sdsu.*;" %>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+        <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+           <!DOCTYPE html>
+           <html lang="en">
+             <head>
+               <!-- Required meta tags always come first -->
+               <meta charset="utf-8">
+               <meta name="viewport" content="width=device-width, initial-scale=1">
+               <meta http-equiv="x-ua-compatible" content="ie=edge">
+               <meta http-equiv='cache-control' content='no-cache'>
+               <meta http-equiv='expires' content='0'>
+               <meta http-equiv='pragma' content='no-cache'>
+               <!-- Bootstrap CSS -->
+
+               <link rel="stylesheet" href="/jadrn015/css/bootstrap.css">
+              <link rel="stylesheet" href="/jadrn015/css/bootstrap.min.css">
+                  <link rel="stylesheet" href="/jadrn015/css/landings.css">
+                      <link rel="stylesheet" href="http://jadran.sdsu.edu/~jadrn015/proj1/jquery-ui-1.12.1.custom/jquery-ui.theme.css">
+              <!-- jQuery first, then Bootstrap JS. -->
+           	<script src="http://jadran.sdsu.edu/jquery/jquery.js"></script>
+              <script src="/jadrn015/js/bootstrap.js"></script>
+                  <script src="http://jadran.sdsu.edu/~jadrn015/proj1/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+              <script src="/jadrn015/js/proj2.js"></script>
+
+             </head>
+             <body>
+              <!---   navigation bar  --->
+           <div id="top">
+                 <div id="header">
+                   <nav class="navbar navbar-default .navbar-fixed-top">
+                     <div class="container-fluid">
+                       <!--  Logo  ---->
+                       <div class="navbar-header">
+                           <img id="logo" src="logo.png" width="50px" />
+                           <a class="navbar-brand" href="#">Mu&icWorld</a>
+                           <li class="active"><a href="#">Home</a></li>
+                           <li><a href="#">About</a></li>
+                           <li><a href="#">Contact</a></li>
+
+                           <input class="formcontrol" type="text" placeholder="Search">
+                           <button class="btn btn-success" type="submit">GO</button>
+
+                         <a href="#">  <img id="cart" src="cart.png" width="50px" /><span id="count">0</span></a>
+                       </div>
+                     </div>
+                  </nav>
+                </div>
+
+
+                   <div class="container-fluid">
+                     <div class="row">
+                       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                       	<div id="carouselwrapper" class="carousel slide" data-ride="carousel">
+                       		<ol class="carousel-indicators">
+                       			<li data-target="#carouselwrapper" data-slide-to="0" class="active"></li>
+                       			<li data-target="#carouselwrapper" data-slide-to="1"></li>
+                       			<li data-target="#carouselwrapper" data-slide-to="2"></li>
+                       		</ol>
+
+                       		<div class="carousel-inner" role="listbox">
+                       			<div class="carousel-item active">
+                       				<img src="header1.jpg" alt="First Slide" />
+                       			</div>
+
+                       			<div class="carousel-item">
+                       				<img src="header2.jpg" alt="Second Slide" />
+                       			</div>
+
+                       			<div class="carousel-item">
+                       				<img src="header3.jpg" alt="Third Slide" />
+                       			</div>
+                       		</div>
+
+                       <!--		<a class="left carousel-control" href="#carouselwrapper" role="button" data-slide="prev">
+                       			<span class="icon-prev" aria-hidden="true"></span>
+                       			<span class="sr-only">Previous</span>
+                       		</a>
+
+                       		<a class="right carousel-control" href="#carouselwrapper" role="button" data-slide="next">
+                       			<span class="icon-next" aria-hidden="true"></span>
+                       			<span class="sr-only">Next</span>
+                       		</a> -->
+                       	</div>
+                       </div>
+                     </div>
+                   </div>
+           </div>
+         </body>
+       </html>
