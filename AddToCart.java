@@ -16,8 +16,8 @@ public class AddToCart extends HttpServlet {
     response.setContentType("text/html");
     PrintWriter out = response.getWriter();
     HttpSession session = request.getSession();
-    String sku=request.getParameter("sku");
-     String qty=request.getParameter("qty");
+    String sku=(String)request.getParameter("sku");
+    int qty=Integer.parseInt(request.getParameter("quantity"));
         // making cart for user and storing in cookie
     CartHelper cartBean = null;
     Object objCartBean = session.getAttribute("jadrn015");
@@ -32,7 +32,8 @@ public class AddToCart extends HttpServlet {
        }
 
      String query ="SELECT * FROM product where sku="+"'"+sku+"'" ;
-     //String s = DBHelper.getQuery(query);
+     String s = "Sorry , item not available";
+     boolean cartflag=false;
      //System.out.println(s);
      //out.println(query);
      Vector<String []> v   = DBHelper.runQuery(query);
@@ -41,11 +42,36 @@ public class AddToCart extends HttpServlet {
      for(int i=0;i<vSize;i++)
       {
 		String [] record=v.elementAt(i);
-        cartBean.addCartProduct(record[0],record[1],record[2],record[3],record[4],record[5],Float.parseFloat(record[6]),Float.parseFloat(record[7]),Integer.valueOf(record[8]) ,record[9]);
+      //if the quantity asked is less than available quantity then add to cart
+       if(Integer.parseInt(record[8]) >qty)
+       {
+          //totalcost = qiantity * cost
+          //double totalcost=Integer.parseInt(qty) * Float.parseFloat(record[7]);
+          cartBean.addCartProduct(record[0],record[1],record[2],record[3],record[4],record[5],Float.parseFloat(record[6]),Float.parseFloat(record[7]),qty ,record[9]);
+          cartflag=true;
+       }
+      else
+         cartflag=false;
+
+        //s=record[0];
      }
-     int count=cartBean.getCartSize();
-      	out.print("product added to cart"+count);
+
+       if (cartflag)
+       {
+            int count=cartBean.getCartSize();
+            out.print("product added to cart"+count );
+       }
+      else
+          out.print(s );
+
+
+
+
  }
+
+
+
+
 
       /**
             * We are going to perform the same operations for POST requests

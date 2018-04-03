@@ -27,8 +27,9 @@ public class CartSize  extends HttpServlet {
        cartBean = new CartHelper();
        session.setAttribute("jadrn015", cartBean);
      }
+
    int size=cartBean.getCartSize();
-    out.print(size);
+   out.print(size);
 }
 
 /**

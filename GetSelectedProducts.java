@@ -16,10 +16,11 @@ public class GetSelectedProducts extends HttpServlet {
       String s="";
       if((category != null && !category.isEmpty()) &&(vendor != null && !vendor.isEmpty()))
           s= "select * from product where venID IN (" + vendor + ") AND catID IN (" + category + ") ";
-      else if (category.isEmpty())
+      else if (category.isEmpty() && !vendor.isEmpty())
            s= "select * from product where venID IN (" + vendor + ")  ";
-      else if (vendor.isEmpty())
-              s= "select * from product where venID IN (" + category + ")  ";
+      else if (vendor.isEmpty()&& !category.isEmpty())
+              s= "select * from product where catID IN (" + category + ")  ";
+          else s= "select * from product ";
 
       //String s =  "select * from product where venID IN (" + vendor + ") AND catID IN (" + category + ") ";
       String result = DBHelper.getQuery(s);

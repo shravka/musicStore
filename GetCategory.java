@@ -10,7 +10,8 @@ public class GetCategory extends HttpServlet {
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
       response.setContentType("text/html");
     	PrintWriter out = response.getWriter();
-      String s = "SELECT name FROM vendor;";
+      String s = "SELECT name FROM category;";
+      System.out.println(s);
       String result = DBHelper.getQuery(s);
       out.print(result);
       }

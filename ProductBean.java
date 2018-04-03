@@ -11,13 +11,13 @@ Usage : Each row in the database will be encapsulated in Product bean and will b
 public class ProductBean implements java.io.Serializable
 {
     //sku, catID,venID,vendorModel,description,features,cost,retail ,quantity,image
-    private String sku, category, vendor, vendorModel, description, features, image;
+    private String sku, category, vendor, vendorModel, description, features, image,message;
     private float cost, retail;
     private int quantity;
     public ProductBean() {
     }
 
-    public ProductBean(String sku, String category, String vendor, String vendorModel, String description, String features, float cost, float retail, int quantity,String image) {
+    public ProductBean(String sku, String category, String vendor, String vendorModel, String description, String features, float cost, float retail, int quantity,String image,String message) {
         this.sku = sku;
         this.category = category;
         this.vendor = vendor;
@@ -28,6 +28,15 @@ public class ProductBean implements java.io.Serializable
         this.quantity = quantity;
         this.cost = cost;
         this.retail = retail;
+        this.message=message;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     public String getSku() {

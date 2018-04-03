@@ -98,21 +98,28 @@ public class DBHelper implements java.io.Serializable {
         return answer;
     }
 /********************copy of Sir's code without html table***************************/
-    public static String getQuery(String s) {
-            String answer = "";
-     try {
-   Class.forName("com.mysql.jdbc.Driver").newInstance();
-   connection = DriverManager.getConnection(connectionURL);
-   statement = connection.createStatement();
-   resultSet = statement.executeQuery(s);
-                ResultSetMetaData rsmd = resultSet.getMetaData();
-   int columns = rsmd.getColumnCount();
-   while(resultSet.next()) {
-       for(int i=1; i <= columns; i++)
-                        answer +=  resultSet.getString(rsmd.getColumnName(i));
-                    answer += "|";
-       }
-   }
+    public synchronized static String getQuery(String s) {
+     	Connection connection = null;
+		Statement statement = null;
+     	String answer = "";
+     	try
+     	{
+		   Class.forName("com.mysql.jdbc.Driver").newInstance();
+		   connection = DriverManager.getConnection(connectionURL);
+		   statement = connection.createStatement();
+		   resultSet = statement.executeQuery(s);
+		  // System.out.println(resultSet);
+		   if(resultSet == null)
+		   		return null;
+
+		   ResultSetMetaData rsmd = resultSet.getMetaData();
+		   int columns = rsmd.getColumnCount();
+		   while(resultSet.next()) {
+			   for(int i=1; i <= columns; i++)
+					answer +=  resultSet.getString(rsmd.getColumnName(i));
+					answer += "|";
+			   }
+		   }
    catch(Exception e) {
      e.printStackTrace();
      return e.toString();
@@ -122,15 +129,15 @@ public class DBHelper implements java.io.Serializable {
         // DO NOT OMIT THIS!!!!!!
         finally {
             try {
-                if(resultSet != null)
+               if(resultSet != null)
                     resultSet.close();
-                if(statement != null)
+               if(statement != null)
                     statement.close();
-                if(connection != null)
+               if(connection != null)
                  connection.close();
                 }
             catch(SQLException e) {
-                answer += e;
+               answer += e;
                 }
         //////////////////////////////////////////////////////////////////////////
         }

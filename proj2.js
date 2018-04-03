@@ -16,20 +16,62 @@ $(document).ready( function() {
 
 
 // delegated events
-	$(document).on("click", ".addtobag" , function() {
+	$(document).on("click", ".change" , function() {
+	var str= this.id;
+		console.log(str);
+  var sku = str.replace("change", "");
 
-		$("#dialog-modal-addToCart").dialog('open');
+	console.log(sku);
+   console.log("change");
+   $('#Quantity'+sku).prop("disabled",false);
+   var quantity = $('#Quantity'+sku).value;
+	 console.log(quantitiy);
+	 $('#Quantity'+sku).focus;
+
+//	$("#dialog-modal-addToCart").dialog('open');
 //	 		 $("#addtobag").attr('disabled','disabled');
  });
+
+ // delegated events
+ 	$(document).on("click", ".delete" , function() {
+			var sku= this.name;
+   console.log("delete");
+	//	$("#dialog-modal-addToCart").dialog('open');
+ //	 		 $("#addtobag").attr('disabled','disabled');
+  });
+
+
+
+
 
 //<a href="Online.html">
 $(document).on("click", "#cart" , function() {
 //CartClientDispatcher
+console.log("ggggggggggggggggggggggggggggggggggggggg");
  var urlString="/jadrn015/servlet/CartClientDispatcher?value=";
- $.post(urlString,function(response) {
+ console.log(urlString);
+ /*$.post(urlString,function(response) {
+	 console.log(response);
 	 //ajax to replace everything
-	$('body').html(response);
-    });
+	//$('body').html(response);
+    });*/
+
+
+    $.ajax({
+					url: urlString,
+					type: "post",
+					success: function(response) {
+				          		 console.log(response);
+				          		 $('body').html(response);
+					},
+					error: function(response) {
+								 console.log(response);
+					}
+			});
+
+
+
+
  });
 
 
@@ -83,6 +125,7 @@ $(document).on('click', ".add-to-cart", function() {
 			console.log(sku);
  			  var quantity = $('#qty'+sku).val();
 	console.log( quantity );
+	console.log("/jadrn015/servlet/AddToCart?sku="+sku+"&quantity="+quantity);
     $.get("/jadrn015/servlet/AddToCart?sku="+sku+"&quantity="+quantity,function(response)
 	 	{
 	    //if response is sucessful , we would like to change cart number as well

@@ -12,11 +12,12 @@ public class CartItemBean implements java.io.Serializable
     private String sku, category, vendor, vendorModel, description, features, image;
     private float cost, retail;
     private int quantity;
+    private double dblTotalCost;
 
     public CartItemBean() {
     }
 
-    public CartItemBean(String sku, String category, String vendor, String vendorModel, String description, String features, float cost, float retail, int quantity,String image) {
+    public CartItemBean(String sku, String category, String vendor, String vendorModel, String description, String features, double dblTotalCost,float cost, float retail, int quantity,String image) {
         this.sku = sku;
         this.category = category;
         this.vendor = vendor;
@@ -25,10 +26,17 @@ public class CartItemBean implements java.io.Serializable
         this.features = features;
         this.image = image;
         this.quantity = quantity;
-        this.cost = cost;
+        this.dblTotalCost = dblTotalCost;
         this.retail = retail;
+        this.retail = cost;
     }
 
+    public double getTotalCost() {
+        return dblTotalCost;
+    }
+    public void setTotalCost(double dblTotalCost) {
+        this.dblTotalCost = dblTotalCost;
+    }
     public String getSku() {
         return sku;
     }
@@ -53,11 +61,11 @@ public class CartItemBean implements java.io.Serializable
         this.vendor = vendor;
     }
 
-    public String getvendorModel() {
+    public String getVendorModel() {
         return vendorModel;
     }
 
-    public void setvendorModel(String vendorModel) {
+    public void setVendorModel(String vendorModel) {
         this.vendorModel = vendorModel;
     }
 
