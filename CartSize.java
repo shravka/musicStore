@@ -28,8 +28,14 @@ public class CartSize  extends HttpServlet {
        session.setAttribute("jadrn015", cartBean);
      }
 
+//this is giving me only the arraylist length
    int size=cartBean.getCartSize();
-   out.print(size);
+
+//should get the arraylist and get the Quantitiy in each Product that will be actual items in cart.
+//ArrayList cartitems=cartBean.getCartItems();
+int size1 = cartBean.getProductCount();
+
+   out.print(size1);
 }
 
 /**

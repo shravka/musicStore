@@ -23,12 +23,17 @@ public class GetProducts extends HttpServlet {
     for(int i=0;i<vSize;i++)
     {
 		String [] record=v.elementAt(i);
-    if(Integer.parseInt(record[8])>0)
-     message="in stock";
-    else
-    message="coming soon";
+        if(Integer.parseInt(record[8])>0)
+           message="in stock";
+        else
+           message="coming soon";
 
-		beans[i] =new ProductBean(record[0],record[1],record[2],record[3],record[4],	record[5],Float.parseFloat(record[6]),Float.parseFloat(record[7]),Integer.parseInt(record[8]) ,record[9],message);
+       /// String categoryname="";
+        ///String vendorname="";
+        // vendorname = DBHelper.getQuery("SELECT name FROM vendor where ID="+record[2]+";");
+         //categoryname=DBHelper.getQuery("SELECT name FROM category where ID="+record[1]+";");
+
+	    beans[i] =new ProductBean(record[0],record[1],record[2],record[3],record[4],record[5],Float.parseFloat(record[6]),Float.parseFloat(record[7]),Integer.parseInt(record[8]) ,record[9],message);
 
     }
 	request.setAttribute("beans",beans);

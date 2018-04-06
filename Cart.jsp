@@ -92,13 +92,13 @@
       <c:forEach var="cartItem"  items="${jadrn015.cartProducts}" varStatus="counter">
       <div class='singletwo' >
       <img class='buyImages' src="/~jadrn015/proj1/musicStore/${cartItem.image}"  width="200px"  />
-        <p>ID <c:out value="${cartItem.vendorModel}"/></p>
-        <p>Price <c:out value="${cartItem.retail}" /> </p>
-         <p>Quanity <input  type='text' class='Quantity' id='Quantity${cartItem.sku}' disabled  name="Quantity${cartItem.sku}" value='<c:out value="${cartItem.quantity}" />' size=2 /><p>
+        <p>ID <c:out value="${cartItem.vendorModel}"/> , Price <c:out value="${cartItem.retail}" /></p>
+        <p>Quanity <input  type='text' class='Quantity' id='Quantity${cartItem.sku}'  name="Quantity${cartItem.sku}" value='<c:out value="${cartItem.quantity}" />' size=2 /><p>
 
     <%--  <input type='button' class='ui-button' id='add'  name="add" value='Add' width='7px'/>---%>
         <input  type='button' class='ui-button change' id='change${cartItem.sku}'  name="change${cartItem.sku}" value='Change' width='7px' />
-        <input  type='button' class='ui-button delete' id='delete${cartItem.sku}'  name="delete${cartItem.sku}" value='Delete Item' width='7px'/>
+        <input  type='button' class='ui-button delete' id='delete${cartItem.sku}_${counter.count}'  name="delete${cartItem.sku}" value='Delete Item' width='7px'/>
+        <input type='hidden' name='itemIndex' value='<c:out value="${counter.count}"/>'>
         </div>
       </c:forEach>
 

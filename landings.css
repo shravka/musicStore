@@ -50,6 +50,45 @@ a{
   color:black;
 }
 
+
+#intro {
+    font-size: 24px;
+    text-align: center;
+    font-weight: bold;
+    font-style: italic;
+}
+
+#venintro {
+    font-family: italics;
+    font-style: italic;
+}
+
+#pintro {
+    font-size: 12px;
+    font-style: italics;
+}
+
+#dintro,#fintro {
+    font-size: 15px;
+    font-style: italic;
+    padding-top: 5px;
+}
+
+.add-to-cart{
+text-align: center;
+font-size: 18px;
+left: 200px;
+position: absolute;
+margin-top: 15px;
+}
+#qintro {
+
+    position: absolute;
+    left: 350px;
+    bottom: 165px;
+    font-size: 18px;
+
+}
 /***********VERTICAL MENU BAR *********************/
 
 .vendorall,.categoryall {

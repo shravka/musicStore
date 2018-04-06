@@ -27,11 +27,17 @@ public class GetSelectedProducts extends HttpServlet {
       Vector<String []> v   = DBHelper.runQuery(s);
       int vSize =v.size();
       //creating bean for each record
+      String message="";
       ProductBean[] beans=new ProductBean[vSize];
       for(int i=0;i<vSize;i++)
         {
           String [] record=v.elementAt(i);
-          beans[i] =new ProductBean(record[0],record[1],record[2],record[3],record[4],	record[5],Float.parseFloat(record[6]),Float.parseFloat(record[7]),Integer.valueOf(record[8]) ,record[9]);
+           if(Integer.parseInt(record[8])>0)
+		        message="in stock";
+		      else
+           message="coming soon";
+
+          beans[i] =new ProductBean(record[0],record[1],record[2],record[3],record[4],record[5],Float.parseFloat(record[6]),Float.parseFloat(record[7]),Integer.valueOf(record[8]) ,record[9],message);
 
         }
       request.setAttribute("beans",beans);

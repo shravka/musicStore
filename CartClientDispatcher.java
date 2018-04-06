@@ -23,11 +23,25 @@ public void doPost(HttpServletRequest request, HttpServletResponse response) thr
 
 
  if(strAction.equals(""))
- 	{
-          //String toDo = "/WEB-INF/jsp/Cart.jsp";
-         getServletConfig().getServletContext().getRequestDispatcher("/WEB-INF/jsp/Cart.jsp").forward(request, response);
-        //dispatcher.forward(request, response);
+   	{
+     getServletConfig().getServletContext().getRequestDispatcher("/WEB-INF/jsp/Cart.jsp").forward(request, response);
     }
+  else if (strAction.equals("delete"))
+    deleteCart(request);
+
+protected void deleteCart(HttpServletRequest request) {
+      HttpSession session = request.getSession();
+      String strItemIndex = request.getParameter("itemIndex");
+      CartBean cartBean = null;
+
+      Object objCartBean = session.getAttribute("cart");
+      if(objCartBean!=null) {
+       cartBean = (CartBean) objCartBean ;
+      } else {
+       cartBean = new CartBean();
+      }
+      cartBean.deleteCartItem(strItemIndex);
+     }
 
  }
 }

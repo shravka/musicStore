@@ -16,28 +16,70 @@ $(document).ready( function() {
 
 
 // delegated events
+//chnage cartform, when click on change , it should get the sku and new qty and send to servlet
 	$(document).on("click", ".change" , function() {
+	//$('#Quantity'+sku).focus;
 	var str= this.id;
-		console.log(str);
+	console.log(str);
   var sku = str.replace("change", "");
 
-	console.log(sku);
+	 console.log(sku);
    console.log("change");
-   $('#Quantity'+sku).prop("disabled",false);
-   var quantity = $('#Quantity'+sku).value;
-	 console.log(quantitiy);
-	 $('#Quantity'+sku).focus;
+   //$('#Quantity'+sku).prop("disabled",false);
+   var quantity = $('#Quantity'+sku).val();
+	 console.log(quantity);
+   //send sku and qty to servlet
+	 var urlString="/jadrn015/servlet/CartClientDispatcher?value=change";
+	 console.log(urlString);
+
 
 //	$("#dialog-modal-addToCart").dialog('open');
 //	 		 $("#addtobag").attr('disabled','disabled');
  });
 
+
+
+
+
+
  // delegated events
  	$(document).on("click", ".delete" , function() {
-			var sku= this.name;
+		var str= this.id;
+		var sku_index = str.replace("delete", "");
+		var sku =sku_index.split('_');
+		console.log(sku);
+		console.log(sku[0]);
+		console.log(sku[1]);
+		console.log(str);
    console.log("delete");
+	 var skuItem=sku[0];
+	 var index=sku[1];
 	//	$("#dialog-modal-addToCart").dialog('open');
  //	 		 $("#addtobag").attr('disabled','disabled');
+
+
+
+
+ var urlString="/jadrn015/servlet/DeleteFromCart?sku="+skuItem+"&index="+index;
+console.log(urlString);
+ /*$.ajax({
+	url: urlString,
+	type: "post",
+	success: function(response) {
+					console.log(response);
+	},
+	error: function(response) {
+				console.log("Some Error occured, please try again");
+	}
+});*/
+$.get(urlString).done(function(respone){
+			  //$('body').html(response);
+			 console.log("im called twice");
+		 });
+
+
+
+
   });
 
 
@@ -47,7 +89,7 @@ $(document).ready( function() {
 //<a href="Online.html">
 $(document).on("click", "#cart" , function() {
 //CartClientDispatcher
-console.log("ggggggggggggggggggggggggggggggggggggggg");
+//console.log("ggggggggggggggggggggggggggggggggggggggg");
  var urlString="/jadrn015/servlet/CartClientDispatcher?value=";
  console.log(urlString);
  /*$.post(urlString,function(response) {
@@ -55,8 +97,6 @@ console.log("ggggggggggggggggggggggggggggggggggggggg");
 	 //ajax to replace everything
 	//$('body').html(response);
     });*/
-
-
     $.ajax({
 					url: urlString,
 					type: "post",
@@ -68,10 +108,6 @@ console.log("ggggggggggggggggggggggggggggggggggggggg");
 								 console.log(response);
 					}
 			});
-
-
-
-
  });
 
 
@@ -112,12 +148,17 @@ $(document).on('click','.View-Details',function(){
 
 /*************for closing the pop up **************/
 // Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+//var span = document.getElementsByClassName("close")[0];
 // When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  $(".modal").css("display", "none");
+//span.onclick = function() {
+  //$(".modal").css("display", "none");
 
-}
+//}
+$(document).on('click', ".close", function() {
+  $(".modal").css("display", "none");
+});
+
+
 
 $(document).on('click', ".add-to-cart", function() {
 	console.log("add-to-cart");
@@ -130,11 +171,12 @@ $(document).on('click', ".add-to-cart", function() {
 	 	{
 	    //if response is sucessful , we would like to change cart number as well
 	 	 $("#status").html(response);
+		 	getCartSize();
   	});
 
 //post all the Product data to servlet
 //update the cart item here call that function and show cart number
-	getCartSize();
+
 });
 
 
